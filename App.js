@@ -1,10 +1,11 @@
 import React from "react";
-import { View, Text } from "react-native";
+
+import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screens";
 
 export default function App() {
   return (
-    <View>
-      <Text>Meals To Go</Text>
-    </View>
+    <>
+      <RestaurantsScreen />
+    </>
   );
 }
