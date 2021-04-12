@@ -50,7 +50,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
             )}
             {isOpenNow && <SvgXml xml={open} width={50} height={50} />}
           </OpenIcon>
-          <Spacer size="left-medium" />
+          <Spacer position="left" size="medium" />
 
           <RestaurantIcon source={{ uri: icon }} />
         </IconsContainer>

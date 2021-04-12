@@ -1,56 +1,39 @@
 import React from "react";
+import styled, { useTheme } from "styled-components/native";
 
-import {
-  TopSmall,
-  TopMedium,
-  TopLarge,
-  LeftSmall,
-  LeftMedium,
-  LefLarge,
-  RightSmall,
-  RightMedium,
-  RightLarge,
-  BottomSmall,
-  BottomMedium,
-  BottomLarge,
-} from "./spacer.component.style";
+const sizeVariant = {
+  small: 1,
+  medium: 2,
+  large: 3,
+};
 
-export const Spacer = ({ size }) => {
-  switch (size) {
-    case "top-medium":
-      return <TopMedium />;
+const positionVariant = {
+  top: "margin-top",
+  left: "margin-left",
+  right: "margin-right",
+  bottom: "margin-bottom",
+};
 
-    case "top-large":
-      return <TopLarge />;
+const getVariant = (position, size, theme) => {
+  const sizeIndex = sizeVariant[size];
+  const property = positionVariant[position];
+  const value = theme.space[sizeIndex];
 
-    case "left-small":
-      return <LeftSmall />;
+  return `${property}:${value}`;
+};
 
-    case "left-medium":
-      return <LeftMedium />;
+const SpacerView = styled.View`
+  ${({ variant }) => variant}
+`;
 
-    case "left-large":
-      return <LefLarge />;
+export const Spacer = ({ position, size, children }) => {
+  const theme = useTheme();
+  const variant = getVariant(position, size, theme);
 
-    case "right-small":
-      return <RightSmall />;
+  return <SpacerView variant={variant}>{children}</SpacerView>;
+};
 
-    case "right-medium":
-      return <RightMedium />;
-
-    case "right-large":
-      return <RightLarge />;
-
-    case "bottom-small":
-      return <BottomSmall />;
-
-    case "bottom-medium":
-      return <BottomMedium />;
-
-    case "bottom-large":
-      return <BottomLarge />;
-
-    default:
-      return <TopSmall />;
-  }
+Spacer.defaultProps = {
+  position: "top",
+  size: "small",
 };
