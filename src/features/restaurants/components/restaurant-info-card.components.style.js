@@ -21,13 +21,26 @@ export const StatusContainer = styled.View`
   justify-content: space-between;
 `;
 
+export const IconsContainer = styled.View`
+  flex-direction: row;
+`;
+
 export const OpenIcon = styled.View`
   padding-right: ${(props) => props.theme.space[4]};
   margin-top: -48px;
 `;
 
 export const ClosedTemporarilyText = styled.Text`
-  padding-top: 18px;
-  margin-right: -${(props) => props.theme.space[2]};
+  padding-top: 44px;
+  margin-right: -24px;
+  font-size: 16px;
+  font-weight: bold;
   color: ${(props) => props.theme.colors.text.red};
+`;
+
+export const RestaurantIcon = styled.Image`
+  height: ${(props) => props.theme.space[3]};
+  width: ${(props) => props.theme.space[3]};
+  margin-top: -28px;
+  margin-right: 24px;
 `;
