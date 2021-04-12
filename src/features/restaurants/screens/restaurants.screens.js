@@ -1,5 +1,5 @@
 import React from "react";
-import { StatusBar, TouchableOpacity, Text } from "react-native";
+import { StatusBar } from "react-native";
 import { Searchbar } from "react-native-paper";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.components";
@@ -8,7 +8,7 @@ import {
   SafeArea,
   SearchContainer,
   RestaurantListContainer,
-} from "./restaurants.screens.style";
+} from "./restaurants.style";
 
 export const RestaurantsScreen = () => {
   return (

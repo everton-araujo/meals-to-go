@@ -4,7 +4,7 @@ import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
 
-import { Spacer } from "./spacer/spacer.component";
+import { Spacer } from "./spacer/spacer.components";
 
 import {
   Card,
@@ -15,7 +15,7 @@ import {
   OpenIcon,
   ClosedTemporarilyText,
   RestaurantIcon,
-} from "./restaurant-info-card.components.style";
+} from "./restaurant-info-card.style";
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
@@ -45,14 +45,16 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
 
         <IconsContainer>
           <OpenIcon>
-            {isClosedTemporarily && (
+            {isClosedTemporarily ? (
               <ClosedTemporarilyText>CLOSED TEMPORARILY</ClosedTemporarilyText>
+            ) : (
+              isOpenNow && <SvgXml xml={open} width={50} height={50} />
             )}
-            {isOpenNow && <SvgXml xml={open} width={50} height={50} />}
           </OpenIcon>
-          <Spacer position="left" size="medium" />
 
-          <RestaurantIcon source={{ uri: icon }} />
+          <Spacer position="left" size="large">
+            <RestaurantIcon source={{ uri: icon }} />
+          </Spacer>
         </IconsContainer>
       </StatusContainer>
     </Card>
