@@ -1,14 +1,11 @@
 import React from "react";
-import { StatusBar } from "react-native";
+import { StatusBar, FlatList } from "react-native";
 import { Searchbar } from "react-native-paper";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.components";
+import { Spacer } from "../components/spacer/spacer.components";
 
-import {
-  SafeArea,
-  SearchContainer,
-  RestaurantListContainer,
-} from "./restaurants.style";
+import { SafeArea, SearchContainer, RestaurantList } from "./restaurants.style";
 
 export const RestaurantsScreen = () => {
   return (
@@ -19,9 +16,22 @@ export const RestaurantsScreen = () => {
           <Searchbar />
         </SearchContainer>
 
-        <RestaurantListContainer>
-          <RestaurantInfoCard />
-        </RestaurantListContainer>
+        <RestaurantList
+          data={[
+            { name: 1 },
+            { name: 2 },
+            { name: 3 },
+            { name: 4 },
+            { name: 5 },
+            { name: 6 },
+          ]}
+          renderItem={() => (
+            <Spacer position="bottom" size="large">
+              <RestaurantInfoCard />
+            </Spacer>
+          )}
+          keyExtractor={(item) => item.name}
+        />
       </SafeArea>
     </>
   );
