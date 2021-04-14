@@ -10,7 +10,7 @@ import { SafeArea } from "../../../components/utility/safe-area.component";
 import { SearchContainer, RestaurantList } from "./restaurants.style";
 
 export const RestaurantsScreen = () => {
-  const restaurantContext = useContext(RestaurantsContext);
+  const { restaurants, isLoading, error } = useContext(RestaurantsContext);
 
   return (
     <>
@@ -21,12 +21,14 @@ export const RestaurantsScreen = () => {
         </SearchContainer>
 
         <RestaurantList
-          data={restaurantContext.restaurants}
-          renderItem={() => (
-            <Spacer position="bottom" size="large">
-              <RestaurantInfoCard />
-            </Spacer>
-          )}
+          data={restaurants}
+          renderItem={({ item }) => {
+            return (
+              <Spacer position="bottom" size="large">
+                <RestaurantInfoCard restaurant={item} />
+              </Spacer>
+            );
+          }}
           keyExtractor={(item) => item.name}
         />
       </SafeArea>
