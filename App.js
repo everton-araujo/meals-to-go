@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screens";
+import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 
 import { SafeArea } from "./src/components/utility/safe-area.component";
 import { theme } from "./src/infrastructure/theme";
@@ -42,19 +43,21 @@ const screenOptions = ({ route }) => {
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={screenOptions}
-          tabBarOptions={{
-            activeTintColor: "tomato",
-            inactiveTintColor: "gray",
-          }}
-        >
-          <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
-          <Tab.Screen name="Map" component={Map} />
-          <Tab.Screen name="Settings" component={Settings} />
-        </Tab.Navigator>
-      </NavigationContainer>
+      <RestaurantsContextProvider>
+        <NavigationContainer>
+          <Tab.Navigator
+            screenOptions={screenOptions}
+            tabBarOptions={{
+              activeTintColor: "tomato",
+              inactiveTintColor: "gray",
+            }}
+          >
+            <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+            <Tab.Screen name="Map" component={Map} />
+            <Tab.Screen name="Settings" component={Settings} />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </RestaurantsContextProvider>
     </ThemeProvider>
   );
 }
